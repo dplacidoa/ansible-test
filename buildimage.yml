@@ -1,0 +1,14 @@
+---
+- name: playbook to build image
+  hosts: ec2
+  become: yes
+  tasks:
+    - name: build image
+      docker_image:
+        name: simple-docker-image
+        build:
+          path: /opt/docker
+          pull: false
+        source: build
+    - debug:
+        var=result_memoria
